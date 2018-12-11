@@ -1,5 +1,4 @@
 {
-  "homepage": "http://5JJ.github.io/myBlog"
   "name": "5JJ.github.io",
   "version": "0.1.0",
   "private": true,
@@ -12,7 +11,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -27,5 +26,6 @@
   ],
   "devDependencies": {
     "gh-pages": "^2.0.1"
-  }
+  },
+  "homepage": "http://5JJ.github.io/my-blog"
 }
