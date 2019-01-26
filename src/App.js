@@ -41,7 +41,12 @@ class App extends Component {
   render() {
     //let noti = "eee";
     return (
-      <div></div>
+      <div>
+        <div className="sidebar">사이드바</div>
+        <div className="content-container">컨텐츠페이지</div>
+      </div>
+      
+
       // <div>
       // <Count name="aa"/>
       // <Alias name="bb"/>
