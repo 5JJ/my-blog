@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import SideBar from './SideBar';
+import ContentsPageList from './ContentsPageList';
 //import Count, {Alias} from './react_test/count';
 //import PhoneForm from './react_test/PhoneForm';
 //import PhoneInfoList from './react_test/PhoneInfoList';
@@ -38,12 +40,29 @@ class App extends Component {
   //   })
 
   // }
+
   render() {
     //let noti = "eee";
     return (
       <div>
-        <div className="sidebar">사이드바</div>
-        <div className="content-container">컨텐츠페이지</div>
+        <div className="sidebar">
+          {/* <SideBar/> */}
+          <section className="profile-box">
+            <p>HelloWorld</p>
+            <img src={logo} alt="logo" />
+            <ul>
+              <li>
+                <span className="list-item">Name</span>
+                Jeonghui Oh
+              </li>
+              <li>
+                <span className="list-item">Email</span>
+                wjdgml015@gmail.com
+              </li>
+            </ul>
+          </section>
+        </div>
+        <ContentsPageList/>
       </div>
       
 
