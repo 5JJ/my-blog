@@ -1,52 +1,28 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar';
 import ContentsPageList from './ContentsPageList';
+import TagList from './TagList';
 //import Count, {Alias} from './react_test/count';
 //import PhoneForm from './react_test/PhoneForm';
 //import PhoneInfoList from './react_test/PhoneInfoList';
+
 import logo from './logo.svg';
 import './App.css';
+import { filterContent } from './redux/action';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  // id = 2;
-  // state = {
-  //   information: [
-  //     {
-  //       id: 0,
-  //       name: '김민준',
-  //       phone: '010-1111-1111',
-  //     },
-  //     {
-  //       id: 1,
-  //       name: '김준',
-  //       phone: '010-1111-1112',
-  //     }
-  //   ]
-  // }
 
-  // handleremove = (id) => {
-  //   const {information} = this.state;
-  //   this.setState({
-  //     information: information.filter(info => info.id !== id)
-  //   })
-  // }
-
-  // handleCreate = (data) => {
-  //   console.log(data);
-
-  //   const {information} = this.state;
-  //   this.setState({
-  //     information: information.concat({id: this.id++, ...data})
-  //   })
-
-  // }
+  contentList () {
+    return this.props.pages.filter(page => page.tags.some((tag_item) => this.props.tags.filter(item => item.checked).map(item => item.id).includes(tag_item)));
+  }
 
   render() {
-    //let noti = "eee";
+    //console.log(this.contentList());
     return (
       <div>
         <div className="sidebar">
-          {/* <SideBar/> */}
+          <TagList allTagList={this.props.tags} filterContent={this.props.filterContent} />
           <section className="profile-box">
             <p>HelloWorld</p>
             <img src={logo} alt="logo" />
@@ -62,36 +38,23 @@ class App extends Component {
             </ul>
           </section>
         </div>
-        <ContentsPageList/>
+        <ContentsPageList contentList={this.contentList()} allTagList={this.props.tags}/>
       </div>
-      
-
-      // <div>
-      // <Count name="aa"/>
-      // <Alias name="bb"/>
-      // <PhoneForm onCreate={this.handleCreate} />
-
-      // <PhoneInfoList data={this.state.information} onRemove={this.handleremove}/>
-      // </div>
-      
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <p>
-      //       Edit <code>src/App.js</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //     {noti}
-      //     </a>
-      //   </header>
-      // </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    pages: state.pages,
+    tags: state.tag_list,
+  }
+}
+
+// object 형태로.
+const mapDispatchToProps = {
+  filterContent
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
