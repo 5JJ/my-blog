@@ -1,23 +1,115 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+ body {
+   margin: 0;
+   padding: 0;
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+     sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+ code {
+   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+     monospace;
+ }
 
-$main-color: red;
-.sidebar{
-  background-color: $main-color;
-}
+ $main-color: #fe026b;
 
-.content-container{
+ #root{
+   clear: both;
+ }
 
-}
+  adjust default styling
+ ul{
+   padding: 0;
+ }
+ li{
+   list-style: none;
+ }
+
+ .sidebar{
+   position: fixed;
+   top: 0;
+   left: 0;
+   background-color: $main-color;
+   width: 13rem;
+   height: 100%;
+ }
+ .profile-box{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   > img{
+     border: 1px solid white;
+     width: 100px;
+     height: 100px;
+   }
+   > ul{
+     border: 1px solid white;
+   }
+   li{
+     font-size: 0.8rem;
+   }
+   .list-item{
+     font-weight: 500;
+
+     &:after{
+       content: " : ";
+     }
+   }
+ }
+
+ .content-container{
+   margin-left: 15rem;
+   margin-right: 30px;
+
+   .content-page{
+     margin-bottom: 20px;
+     border: 1px solid #eee;
+     border-radius: 1rem;
+     padding: 10px 15px;
+
+     .title{
+       margin: 0;
+       border-bottom: 2px solid #ddd;
+     }
+     .content{
+
+     }
+   }
+ }
+
+ .tag-list{
+   @mixin mappingColorSet($color-set){
+    @each $property, $value in $color-set{
+      #{$property} : $value;
+    }
+   }
+   $tag-checked-color-set : (
+    border-color: yellow,
+    background-color: white,
+   );
+   $tag-unchecked-color-set : (
+    border-color: black,
+    background-color: #999,
+   );
+   .tag{
+     border: 1px solid;
+     margin: 0 3px 3px 0;
+     border-radius: 5px;
+     display: inline-block;
+     cursor: pointer;
+
+     &.checked{
+       @include mappingColorSet($tag-checked-color-set);
+     }
+     &.unchecked{
+      @include mappingColorSet($tag-unchecked-color-set);
+
+      &:hover{
+        @include mappingColorSet($tag-checked-color-set);
+        opacity: 0.8;
+       }
+     }
+   }
+ }
