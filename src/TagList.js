@@ -8,10 +8,7 @@ class TagList extends Component {
     render() {
         let tagClassName = "tag";
         const list = this.props.allTagList.map(
-            item => {
-                console.log(item);
-                
-                return (
+            item => (
                     <span 
                         key={item.id} 
                         className={`tag ${item.checked ? 'checked' : 'unchecked'}`} 
@@ -19,8 +16,7 @@ class TagList extends Component {
                         >
                         {item.name}
                     </span>
-                );
-            }
+                )
         )
 
         return(
