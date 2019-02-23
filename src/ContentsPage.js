@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 
 class ContentsPage extends Component {
-    static defaultProps = {
-        id: 0,
-        title: '제목',
-        contents: "내용",
-        tags: [],
-        char_type: 'KR',
-    }
-
-
-
     render() {
-        let {title, contents, tags} = this.props.data;
+        const {id, title, contents, tags} = this.props.data;
+        const allTagList = this.props.allTagList.filter(item => tags.includes(item.id)).map(
+            (tag, index) => (<span key={index} className="tag">{tag.name}</span>)
+        )
+
         return(
             <li className="content-page">
                 <h3 className="title">{title}</h3>
                 <p className="contents">{contents}</p>
-                <div>{tags}</div>
+                <div className="tag-list">{allTagList}</div>
             </li>
         )    
     }
