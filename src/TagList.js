@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
+import TagItem from './TagItem.js';
 
 class TagList extends Component {
-    id = 0;
-    state = {
-        //tags: []
-    }
     render() {
-        let tagClassName = "tag";
         const list = this.props.allTagList.map(
-            item => (
-                    <span 
-                        key={item.id} 
-                        className={`tag ${item.checked ? 'checked' : 'unchecked'}`} 
-                        onClick={() => {this.props.filterContent(item.id)}}
-                        >
-                        {item.name}
-                    </span>
-                )
+            (item, index) => (<TagItem key={index} item={item} place_at={"sidebar"} index={index} filterContent={this.props.filterContent}/>)
         )
 
         return(
