@@ -11,7 +11,8 @@ class ContentsPageList extends Component {
 
         return(
             <ul className="content-container">
-                {page_list}
+                {
+                    page_list.length > 0 ? page_list : <li className="content-empty">해당하는 페이지가 존재하지 않습니다.</li>}
             </ul>
         )    
     }
