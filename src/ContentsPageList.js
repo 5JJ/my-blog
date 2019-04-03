@@ -4,9 +4,9 @@ import ContentPage from './ContentsPage.js';
 class ContentsPageList extends Component {
 
     render() {        
-        const {contentList, allTagList} = this.props;
+        const {contentList, allTagList, allLanguageList} = this.props;
         const page_list = contentList.map(
-            (item, index) => (<ContentPage key={index} data={item} allTagList={allTagList} />)
+            (item, index) => (<ContentPage key={index} page={item} allTagList={allTagList} allLanguageList={allLanguageList} />)
         );
 
         return(

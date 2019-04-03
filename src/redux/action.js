@@ -19,4 +19,9 @@ export const filterContent = (tag_id) => {
         tag_id: tag_id,
     }
 }
- 
+export const selectLanguage = (language_id) => {
+    return {
+        type: 'SELECT_LANGUAGE',
+        language_id: language_id,
+    }
+}
